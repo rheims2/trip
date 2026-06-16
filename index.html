@@ -137,6 +137,57 @@
     border-bottom-color: var(--gold);
     background: rgba(200,151,58,.06);
   }
+  /* ── PLAN TOGGLE (July 4) ── */
+  .plan-toggle {
+    background: white;
+    border: 1px solid var(--smoke);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+  }
+  .plan-toggle-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .plan-toggle-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+  .plan-btn {
+    flex: 1;
+    min-width: 140px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 11px 14px;
+    border-radius: 9px;
+    border: 1.5px solid var(--smoke);
+    background: var(--cream);
+    color: var(--muted);
+    cursor: pointer;
+    transition: all .15s;
+  }
+  .plan-btn:hover:not(.active) { border-color: var(--navy); color: var(--navy); }
+  .plan-btn.active {
+    background: var(--navy);
+    color: white;
+    border-color: var(--navy);
+  }
+  .plan-track { display: none; }
+  .plan-track.active { display: block; }
+  .plan-intro {
+    background: #eef4f7;
+    border-left: 3px solid #7ec8e3;
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #3a4555;
+    margin-bottom: 18px;
+  }
+
+  /* ── PLAN TOGGLE end ── */
   .day-tab:hover:not(.active) { color: rgba(255,255,255,.8); }
 
   /* ── MAP TAB (legacy, hidden) ── */
@@ -538,8 +589,19 @@
 <section class="day-panel" id="panel-sat">
   <div class="day-header">
     <span class="day-label">Saturday</span>
-    <span class="day-date">July 4 · Fireworks Night</span>
+    <span class="day-date">July 4 · Independence Day</span>
   </div>
+
+  <div class="plan-toggle">
+    <div class="plan-toggle-label">Choose your July 4th:</div>
+    <div class="plan-toggle-btns">
+      <button class="plan-btn active" data-plan="howard">🎆 Howard Park (in town)</button>
+      <button class="plan-btn" data-plan="lake">🌅 Lake Michigan day trip</button>
+    </div>
+  </div>
+
+  <!-- PLAN A: Howard Park -->
+  <div class="plan-track active" id="plan-howard">
   <div class="timeline">
 
     <div class="block">
@@ -642,6 +704,99 @@
     </div>
 
   </div>
+  </div><!-- /plan-howard -->
+
+  <!-- PLAN B: Lake Michigan -->
+  <div class="plan-track" id="plan-lake">
+  <div class="plan-intro">
+    A relaxed lakeside alternative in <strong>St. Joseph, Michigan</strong> — about a 40-minute drive northwest. A classic Lake Michigan beach town with a lighthouse pier to tour, a walkable downtown, and fireworks over the water. Great if you'd rather trade the in-town crowd for sand and sunset.
+  </div>
+  <div class="timeline">
+
+    <div class="block">
+      <div class="block-time">9:00 am</div>
+      <div class="block-card coffee">
+        <div class="block-title">Coffee + easy start <span class="tag tag-coffee">Coffee</span></div>
+        <div class="block-note">Grab coffee in town (Zen or Cloud Walking) and pack beach gear — towels, sunscreen, chairs, and a cooler. No rush; the goal is a slow lake day.</div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-time">10:30 am</div>
+      <div class="block-card activity">
+        <div class="block-title">Drive to St. Joseph, MI <span class="tag tag-walk">Road trip</span></div>
+        <div class="block-note">About 40 minutes northwest, crossing into Michigan (Eastern Time — you lose an hour, so plan around that). Scenic and easy.</div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-time">12:00 pm</div>
+      <div class="block-card food">
+        <div class="block-title">Lunch in downtown St. Joseph <span class="tag tag-food">Lunch</span></div>
+        <div class="block-note">Walkable bluff-top downtown with lake views, shops, and good food.</div>
+        <div class="options">
+          <div class="option">
+            <div class="option-left">
+              <div class="option-name">Base Bowls & Company</div>
+              <div class="option-sub">Build-your-own salads, bowls, smoothies — best healthy fit</div>
+            </div>
+            <span class="option-badge badge-pick">Top pick</span>
+            <a href="https://basebowls.square.site/" target="_blank" class="menu-link">Menu ↗</a>
+          </div>
+          <div class="option">
+            <div class="option-left">
+              <div class="option-name">Dad's Farm & Café</div>
+              <div class="option-sub">Fresh wraps, sandwiches, soups — local favorite</div>
+            </div>
+            <span class="option-badge badge-alt">Alternative</span>
+            <a href="https://www.dadsfarm.net/" target="_blank" class="menu-link">Menu ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-time">1:30 pm</div>
+      <div class="block-card activity">
+        <div class="block-title">Tour the North Pier & Lighthouses <span class="tag tag-walk">Tour</span></div>
+        <div class="block-note">Walk out along the St. Joseph North Pier to the two historic lighthouses connected by an elevated catwalk — the signature sight here. Bring the camera; the pier views back toward the bluff are excellent.</div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-time">2:30 pm</div>
+      <div class="block-card activity">
+        <div class="block-title">Beach time · Silver Beach <span class="tag tag-walk">Beach</span></div>
+        <div class="block-note">One of the best beaches on the lake — wide sand, warm shallow water, a splash pad, playground, and the historic Silver Beach Carousel nearby. Stake out a spot for the afternoon. This is also where you'll watch fireworks tonight.</div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-time">5:30 pm</div>
+      <div class="block-card food">
+        <div class="block-title">Early dinner near the beach <span class="tag tag-food">Dinner</span></div>
+        <div class="block-note">Eat before the crowd settles in for fireworks. Silver Beach Pizza and several spots near the waterfront are within easy reach — or pack a picnic/cooler and eat on the sand to hold your spot.</div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-time">7:00 pm</div>
+      <div class="block-card activity">
+        <div class="block-title">Sunset over the lake 🌅 <span class="tag tag-walk">Golden hour</span></div>
+        <div class="block-note">Lake Michigan faces due west, so the sunset here is the real show before the fireworks. Settle in on the beach with the sun going down over the water.</div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-time">~10:00 pm</div>
+      <div class="block-card fireworks">
+        <div class="block-title">Fireworks over Lake Michigan 🎇 <span class="tag tag-fire">Main event</span></div>
+        <div class="block-note">St. Joseph's fireworks launch over the water with the beach as your viewing spot — one of the prettiest settings in the region. <strong>Note:</strong> Michigan is on Eastern Time, so the show starts an hour "later" than back in South Bend. Confirm the exact date/time before the trip — lakeshore towns sometimes shoot on July 3 instead. Expect a slow drive out; leave a little time.</div>
+      </div>
+    </div>
+
+  </div>
+  </div><!-- /plan-lake -->
 </section>
 
 <!-- ─────────── SUNDAY ─────────── -->
@@ -932,6 +1087,28 @@ const places = [
     note: "Mediterranean · healthy lunch pick",
     menu: "https://aladdins.com/our-menu/",
     color: "#3d6b4f"
+  },
+  {
+    name: "Silver Beach (St. Joseph, MI)",
+    type: "activity",
+    lat: 42.1102, lng: -86.4886,
+    note: "🌅 Lake Michigan beach + July 4 fireworks (optional day trip)",
+    color: "#b03c2e"
+  },
+  {
+    name: "St. Joseph North Pier Lighthouse",
+    type: "activity",
+    lat: 42.1161, lng: -86.4935,
+    note: "Historic pier & lighthouses to tour (optional day trip)",
+    color: "#2a5580"
+  },
+  {
+    name: "Base Bowls & Co. (St. Joseph, MI)",
+    type: "food",
+    lat: 42.0810, lng: -86.4861,
+    note: "Healthy bowls & salads · lake-trip lunch",
+    menu: "https://basebowls.square.site/",
+    color: "#3d6b4f"
   }
 ];
 
@@ -1023,6 +1200,16 @@ function renderMap(filter) {
     </div>
   `).join('');
 }
+
+// Plan toggle (July 4: Howard Park vs Lake Michigan)
+document.querySelector('.plan-toggle-btns')?.addEventListener('click', e => {
+  const btn = e.target.closest('.plan-btn');
+  if (!btn) return;
+  document.querySelectorAll('.plan-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.plan-track').forEach(t => t.classList.remove('active'));
+  document.getElementById('plan-' + btn.dataset.plan)?.classList.add('active');
+});
 
 // Filter buttons
 document.querySelector('.map-filters')?.addEventListener('click', e => {
